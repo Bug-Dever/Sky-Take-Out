@@ -1,0 +1,20 @@
+OrderMate:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    host: localhost
+    port: 3306
+    database: OrderMate
+    username: root
+    password: 123456
+  alioss:
+    endpoint: oss-cn-hangzhou.aliyuncs.com
+    access-key-id: LTAI5tB9Xozc4W7y8NexxocB
+    access-key-secret: OWGmnbw69wNXf0SYo00DbUV8gTR9b4
+    bucket-name: gsh-takeout
+  redis:
+    host: localhost
+    port: 6379
+    database: 10
+  wechat:
+    appid: wxaeb629f86d0f7faa
+    secret: ce72fabf08e56b66dd7c462286db84e7

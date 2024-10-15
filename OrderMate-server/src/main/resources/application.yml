@@ -1,0 +1,54 @@
+server:
+  port: 8080
+
+spring:
+  profiles:
+    active: dev
+  main:
+    allow-circular-references: true
+  datasource:
+    druid:
+      driver-class-name: ${OrderMate.datasource.driver-class-name}
+      url: jdbc:mysql://${OrderMate.datasource.host}:${OrderMate.datasource.port}/${OrderMate.datasource.database}?serverTimezone=Asia/Shanghai&useUnicode=true&characterEncoding=utf-8&zeroDateTimeBehavior=convertToNull&useSSL=false&allowPublicKeyRetrieval=true
+      username: ${OrderMate.datasource.username}
+      password: ${OrderMate.datasource.password}
+  redis:
+    host: ${OrderMate.redis.host}
+    port: ${OrderMate.redis.port}
+    database: ${OrderMate.redis.database}
+
+mybatis:
+  # mapper 配置文件
+  mapper-locations: classpath:mapper/*.xml
+  type-aliases-package: com.OrderMate.entity
+  configuration:
+    # 开启驼峰映射
+    map-underscore-to-camel-case: true
+
+logging:
+  level:
+    com:
+      sky:
+        mapper: debug
+        service: info
+        controller: info
+
+OrderMate:
+  jwt:
+    # 设置jwt签名加密时使用的秘钥
+    admin-secret-key: itcast
+    # 设置jwt过期时间
+    admin-ttl: 7200000
+    # 设置前端传递过来的令牌名称
+    admin-token-name: token
+    user-secret-key: gsh
+    user-ttl: 7200000
+    user-token-name: authentication
+  alioss:
+    endpoint: ${OrderMate.alioss.endpoint}
+    access-key-id: ${OrderMate.alioss.access-key-id}
+    access-key-secret: ${OrderMate.alioss.access-key-secret}
+    bucket-name: ${OrderMate.alioss.bucket-name}
+  wechat:
+    appid: ${OrderMate.wechat.appid}
+    secret: ${OrderMate.wechat.secret}
